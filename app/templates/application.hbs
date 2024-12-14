@@ -1,0 +1,38 @@
+<main>
+  {{#if this.isLoading}}
+    <p>Loading...</p>
+  {{else}}
+    {{#if this.errorMessage}}
+      <p>{{this.errorMessage}}</p>
+    {{else}}
+      <h2>Categories</h2>
+      {{#if this.categories.length}}
+        <ul>
+          {{#each this.categories as |category|}}
+            <li>{{category}}</li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>No categories found.</p>
+      {{/if}}
+
+      <h2>Products</h2>
+      {{#if this.products.length}}
+        <div class="image-grid">
+          {{#each this.products as |product|}}
+            <div class="product">
+              <h3>{{product.title}}</h3>
+              <p>\${{product.price}}</p>
+              <p>{{product.description}}</p>
+              {{#if product.image}}
+                <img src="{{product.image}}" alt="{{product.title}}" />
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <p>No products found.</p>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</main>
